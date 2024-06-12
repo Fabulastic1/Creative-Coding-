@@ -1,0 +1,33 @@
+function setup() {
+  createCanvas(400, 400);
+}
+
+function draw() {
+  background(220);
+
+  push();
+  translate(20,0);
+  fill('rgb(224,218,12)');
+  ellipse(185,160,60);
+  pop();
+        
+  push();
+  translate(10,-30);
+  fill('rgb(12,206,224)');
+  ellipse(185,160,50);
+  pop();
+  
+  push();
+  translate(0,0);
+  fill('#E91E63');
+  ellipse(185,160,60);
+  pop();
+  
+  
+  push();
+  fill('#A08347');
+  triangle(160,180,230,180,195,267);
+  pop();
+  
+  
+}
