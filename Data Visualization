@@ -1,0 +1,46 @@
+let data = [
+  { name: "Jobs", value: 45 },
+  { name: "Morale", value: 78 },
+  { name: "Ethics", value: 120 },
+  { name: "Poverty", value: 200 },
+  { name: "Violence", value: 90 }
+];
+let barWidth;
+let maxData;
+
+function setup() {
+  createCanvas(800, 500);
+  barWidth = width / data.length;
+  maxData = max(data.map(obj => obj.value));
+  textAlign(CENTER);
+  textSize(16);
+  noLoop();
+}
+
+function draw() {
+  background(255);
+  
+
+  let barColor = color(0, 100, 200);
+  let textColor = color(0);
+  
+
+  for (let i = 0; i < data.length; i++) {
+    let x = i * barWidth;
+    let h = map(data[i].value, 0, maxData, 0, height * 0.8);
+    let y = height - h;
+    let labelY = y - 10;
+    
+
+    fill(barColor);
+    rect(x, y, barWidth - 1, h);
+    
+    fill(textColor);
+    text(data[i].name, x + barWidth / 2, y - 5); 
+  }
+  
+  // Axis
+  strokeWeight(2);
+  stroke(textColor);
+  line(0, height - 20, width, height - 20);
+}
