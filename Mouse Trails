@@ -1,0 +1,41 @@
+let trail = [];
+
+function setup() {
+  createCanvas(800, 600);
+}
+
+function draw() {
+  background(220);
+
+  for (let i = 0; i < trail.length; i++) {
+    trail[i].update();
+    trail[i].display();
+  }
+
+
+  trail.push(new TrailPoint(mouseX, mouseY));
+
+  if (trail.length > 50) {
+    trail.splice(0, 1);
+  }
+}
+
+class TrailPoint {
+  constructor(x, y) {
+    this.x = x;
+    this.y = y;
+    this.diameter = random(10, 30);
+    this.color = color(random(255), random(255), random(255), 100);
+  }
+
+  update() {
+    this.x += random(-5, 5);
+    this.y += random(-5, 5);
+  }
+
+  display() {
+    fill(this.color);
+    noStroke();
+    ellipse(this.x, this.y, this.diameter, this.diameter);
+  }
+}
