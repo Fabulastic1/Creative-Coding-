@@ -1,0 +1,48 @@
+let mic;
+let fft;
+let trail = [];
+
+function setup() {
+  createCanvas(windowWidth, windowHeight);
+  
+  fft = new p5.FFT();
+
+  mic = new p5.AudioIn();
+  mic.start();
+}
+
+function draw() {
+  background(0);
+  
+ 
+  let spectrum = fft.analyze();
+
+  
+  let amp = mic.getLevel() * 1000;
+  let freq = map(mouseX, 0, width, 20, 20000); 
+  trail.push({x: mouseX, y: height / 2 + sin(frameCount * 0.1) * amp});
+  
+
+  beginShape();
+  noFill();
+  stroke(255);
+  strokeWeight(3);
+  for (let i = 0; i < trail.length; i++) {
+    vertex(trail[i].x, trail[i].y);
+  }
+  endShape();
+
+  
+  if (trail.length > 100) {
+    trail.shift();
+  }
+
+ 
+  for (let i = 0; i < spectrum.length; i++) {
+    let x = map(i, 0, spectrum.length, 0, width);
+    let h = map(spectrum[i], 0, 255, height, 0);
+    let col = map(h, 0, height, 0, 255);
+    stroke(col, 255, 255);
+    line(x, height, x, h);
+  }
+}
