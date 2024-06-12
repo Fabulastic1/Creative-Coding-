@@ -1,0 +1,48 @@
+function setup() {
+  createCanvas(400, 400);
+  noLoop();
+}
+
+function draw() {
+  background(0);
+
+  // Body
+  fill(0, 255, 0); 
+  ellipse(200, 200, 150, 200); 
+
+
+  fill(255); 
+  ellipse(170, 170, 40, 60); 
+  ellipse(230, 170, 40, 60); 
+  
+  fill(0); 
+  ellipse(170, 170, 20, 30); 
+  ellipse(230, 170, 20, 30); 
+  
+  
+  stroke(0, 255, 0);
+  strokeWeight(4);
+  line(160, 90, 130, 50); 
+  line(240, 90, 270, 50); 
+  noStroke();
+  fill(0, 255, 0);
+  ellipse(130, 50, 20, 20); 
+  ellipse(270, 50, 20, 20); 
+
+
+  noFill();
+  stroke(255, 0, 0); 
+  strokeWeight(3);
+  arc(200, 240, 80, 40, 0, PI); 
+
+ 
+  stroke(0, 255, 0);
+  strokeWeight(6);
+  line(125, 250, 50, 300); 
+  line(275, 250, 350, 300); 
+
+  // Legs
+  strokeWeight(10);
+  line(170, 350, 170, 400); 
+  line(230, 350, 230, 400);
+}
